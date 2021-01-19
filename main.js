@@ -1,6 +1,5 @@
 /* 
 * A Science exercise to simulate generating DNA specimens randomly and apply different methods on them from a factory object.
-* Created by Sam Burch
 */
 
 // Returns a random DNA base
@@ -71,6 +70,28 @@ const pAequorFactory = (number, dna) => {
         return false;
       }
 
+    },
+    complementStrand() {
+
+      const complementStrand = [];
+      for(let i = 0; i < dna.length; i++) {
+
+        if(dna[i] === 'A') {
+          complementStrand.push('T')
+        } else if (dna[i] === 'T') {
+          complementStrand.push('A')
+        } else if (dna[i] === 'G') {
+          complementStrand.push('C')        
+        } else if (dna[i] === 'C') {
+          complementStrand.push('G')        
+        } else {
+          complementStrand.push(dna[i])
+        }
+
+      }
+      console.log(`This was the original ${dna} and this is the new complementary strand ${complementStrand}`);
+      return complementStrand.toString();
+
     }
   }
 )};
@@ -83,3 +104,7 @@ console.log(pAequorFactory(1, mockUpStrand()).compareDNA(pAequorFactory(2, mockU
 
 // Test suvival chance of the specimen
 console.log(pAequorFactory(1, mockUpStrand()).willLikelySurvive());
+
+// Test for complement strand of DNA
+console.log(pAequorFactory(1, mockUpStrand()).complementStrand());
+
